@@ -11,6 +11,6 @@ import org.hibernate.validator.constraints.NotBlank;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthorDto {
-    private String authorName;
+    private String name;
     private String slug;
 }

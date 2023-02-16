@@ -22,7 +22,9 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public AuthorDto getOne(Integer id) {
-        return ObjectMapperUtils.map(authorRepository.findById(id), AuthorDto.class);
+        Author author = authorRepository.findAuthorById(id);
+        AuthorDto authorDto = ObjectMapperUtils.map(author, AuthorDto.class);
+        return authorDto;
     }
 
 
