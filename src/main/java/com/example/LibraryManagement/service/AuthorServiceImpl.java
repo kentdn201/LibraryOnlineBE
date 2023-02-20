@@ -30,8 +30,14 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public String createAuthor(CreateAuthorDto authorDto) {
-        Author author = ObjectMapperUtils.map(authorDto, Author.class);
-        authorRepository.save(author);
-        return "Create Success";
+        try {
+            Author author = ObjectMapperUtils.map(authorDto, Author.class);
+            authorRepository.save(author);
+            return "Create Success";
+        } catch (Exception e)
+        {
+            return "Create fail";
+        }
+
     }
 }

@@ -17,7 +17,6 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookDto> getAll() {
-
         List<Book> books = bookRepository.findAll();
         List<BookDto> bookDtos = ObjectMapperUtils.mapAll(books, BookDto.class);
         return bookDtos;

@@ -32,9 +32,13 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public String createCategory(CreateCategoryDto createCategoryDto) {
-        Category category = ObjectMapperUtils.map(createCategoryDto, Category.class);
-        categoryRepository.save(category);
-        return "Create Success";
+        try {
+            Category category = ObjectMapperUtils.map(createCategoryDto, Category.class);
+            categoryRepository.save(category);
+            return "Create Success";
+        } catch (Exception e) {
+            return "Create fail";
+        }
     }
 
     @Override
