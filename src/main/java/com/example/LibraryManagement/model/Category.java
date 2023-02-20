@@ -19,6 +19,8 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private @NotBlank String name;
+
+    @Column(unique = true)
     private @NotBlank String slug;
     private @NotBlank String image;
 }

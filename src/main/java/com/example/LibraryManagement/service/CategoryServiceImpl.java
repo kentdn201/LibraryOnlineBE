@@ -23,7 +23,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryDto getOne(Integer id) {
-        return ObjectMapperUtils.map(categoryRepository.findById(id), CategoryDto.class);
+        return ObjectMapperUtils.map(categoryRepository.findUserById(id), CategoryDto.class);
     }
 
     @Override
@@ -34,6 +34,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public String createCategory(CategoryDto categoryDto) {
         Category category = ObjectMapperUtils.map(categoryDto, Category.class);
+        categoryRepository.save(category);
         return "Create Success";
     }
 

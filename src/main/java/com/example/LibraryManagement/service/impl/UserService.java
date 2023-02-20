@@ -13,7 +13,7 @@ public interface UserService  {
 
     User editUser(UserDto userDto, Integer id);
 
-    User findByUserId(Integer id);
+    UserDto findByUserId(Integer id);
 
     List<UserDto> getAllUser();
 }

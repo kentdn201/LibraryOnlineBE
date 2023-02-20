@@ -15,16 +15,29 @@ public class CategoryController {
     private CategoryServiceImpl categoryService;
 
     @GetMapping("/all")
-        private List<CategoryDto> getAll()
+        public List<CategoryDto> getAll()
     {
         return categoryService.getAll();
     }
 
+    @GetMapping("/get/{id}")
+    public CategoryDto getCategory(@PathVariable(name = "id") Integer id)
+    {
+        return categoryService.getOne(id);
+    }
+
     @PostMapping("/create")
-    private String createCategory (@RequestBody CategoryDto categoryDto)
+    public String createCategory (@RequestBody CategoryDto categoryDto)
     {
         categoryService.createCategory(categoryDto);
         return "Create success";
+    }
+
+    @PutMapping("/edit/{id}")
+    public String editCategory (@PathVariable(name = "id") Integer id, @RequestBody CategoryDto categoryDto)
+    {
+        categoryService.editCategory(id, categoryDto);
+        return "Edit success";
     }
 
 }

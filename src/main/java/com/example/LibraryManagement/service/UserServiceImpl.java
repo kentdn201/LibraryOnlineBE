@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserDetails, UserService {
     }
 
     @Override
-    public User findByUserId(Integer id) {
-        return userRepository.findUserById(id);
+    public UserDto findByUserId(Integer id) {
+         return ObjectMapperUtils.map(userRepository.findUserById(id), UserDto.class);
     }
 
     @Override

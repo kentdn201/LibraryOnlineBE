@@ -24,6 +24,12 @@ public class UserController {
         return userService.getAllUser();
     }
 
+    @GetMapping("/get/{id}")
+    public UserDto getOne(@PathVariable(name = "id") Integer id)
+    {
+        return userService.findByUserId(id);
+    }
+
     @PostMapping("/create")
     public User createUser(@RequestBody UserRegisterDto userRegisterDto)
     {
