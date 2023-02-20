@@ -1,7 +1,7 @@
 package com.example.LibraryManagement.service;
 
 import com.example.LibraryManagement.config.ObjectMapperUtils;
-import com.example.LibraryManagement.dto.Author.AuthorDto;
+import com.example.LibraryManagement.dto.Author.CreateAuthorDto;
 import com.example.LibraryManagement.model.Author;
 import com.example.LibraryManagement.repository.AuthorRepository;
 import com.example.LibraryManagement.service.impl.AuthorService;
@@ -16,20 +16,20 @@ public class AuthorServiceImpl implements AuthorService {
     private AuthorRepository authorRepository;
 
     @Override
-    public List<AuthorDto> getAll() {
-        return ObjectMapperUtils.mapAll(authorRepository.findAll(), AuthorDto.class);
+    public List<CreateAuthorDto> getAll() {
+        return ObjectMapperUtils.mapAll(authorRepository.findAll(), CreateAuthorDto.class);
     }
 
     @Override
-    public AuthorDto getOne(Integer id) {
+    public CreateAuthorDto getOne(Integer id) {
         Author author = authorRepository.findAuthorById(id);
-        AuthorDto authorDto = ObjectMapperUtils.map(author, AuthorDto.class);
+        CreateAuthorDto authorDto = ObjectMapperUtils.map(author, CreateAuthorDto.class);
         return authorDto;
     }
 
 
     @Override
-    public String createAuthor(AuthorDto authorDto) {
+    public String createAuthor(CreateAuthorDto authorDto) {
         Author author = ObjectMapperUtils.map(authorDto, Author.class);
         authorRepository.save(author);
         return "Create Success";

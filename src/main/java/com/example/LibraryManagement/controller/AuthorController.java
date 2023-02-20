@@ -1,8 +1,6 @@
 package com.example.LibraryManagement.controller;
 
-import com.example.LibraryManagement.dto.Author.AuthorDto;
-import com.example.LibraryManagement.dto.Book.BookDto;
-import com.example.LibraryManagement.model.Author;
+import com.example.LibraryManagement.dto.Author.CreateAuthorDto;
 import com.example.LibraryManagement.service.AuthorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,18 +15,18 @@ public class AuthorController {
     private AuthorServiceImpl authorService;
 
     @GetMapping("/all")
-    public List<AuthorDto> getAll() {
+    public List<CreateAuthorDto> getAll() {
         return authorService.getAll();
     }
 
     @GetMapping("/get/{id}")
-    public AuthorDto getOne(@PathVariable(name = "id") Integer id)
+    public CreateAuthorDto getOne(@PathVariable(name = "id") Integer id)
     {
         return authorService.getOne(id);
     }
 
     @PostMapping("/create")
-    public String createAuthor(@RequestBody AuthorDto authorDto)
+    public String createAuthor(@RequestBody CreateAuthorDto authorDto)
     {
         authorService.createAuthor(authorDto);
         return "Create success";

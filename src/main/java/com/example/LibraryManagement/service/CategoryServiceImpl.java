@@ -1,12 +1,11 @@
 package com.example.LibraryManagement.service;
 
 import com.example.LibraryManagement.config.ObjectMapperUtils;
-import com.example.LibraryManagement.dto.Category.CategoryDto;
+import com.example.LibraryManagement.dto.Category.CreateCategoryDto;
 import com.example.LibraryManagement.model.Category;
 import com.example.LibraryManagement.repository.CategoryRepository;
 import com.example.LibraryManagement.service.impl.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,29 +16,29 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryRepository categoryRepository;
 
     @Override
-    public List<CategoryDto> getAll() {
-        return ObjectMapperUtils.mapAll(categoryRepository.findAll(), CategoryDto.class);
+    public List<CreateCategoryDto> getAll() {
+        return ObjectMapperUtils.mapAll(categoryRepository.findAll(), CreateCategoryDto.class);
     }
 
     @Override
-    public CategoryDto getOne(Integer id) {
-        return ObjectMapperUtils.map(categoryRepository.findUserById(id), CategoryDto.class);
+    public CreateCategoryDto getOne(Integer id) {
+        return ObjectMapperUtils.map(categoryRepository.findUserById(id), CreateCategoryDto.class);
     }
 
     @Override
-    public CategoryDto getBySlug(String slug) {
-        return ObjectMapperUtils.map(categoryRepository.findBySlug(slug), CategoryDto.class);
+    public CreateCategoryDto getBySlug(String slug) {
+        return ObjectMapperUtils.map(categoryRepository.findBySlug(slug), CreateCategoryDto.class);
     }
 
     @Override
-    public String createCategory(CategoryDto categoryDto) {
-        Category category = ObjectMapperUtils.map(categoryDto, Category.class);
+    public String createCategory(CreateCategoryDto createCategoryDto) {
+        Category category = ObjectMapperUtils.map(createCategoryDto, Category.class);
         categoryRepository.save(category);
         return "Create Success";
     }
 
     @Override
-    public String editCategory(Integer id, CategoryDto categoryDto) {
+    public String editCategory(Integer id, CreateCategoryDto createCategoryDto) {
         return null;
     }
 

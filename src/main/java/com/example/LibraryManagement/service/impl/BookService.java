@@ -12,7 +12,7 @@ public interface BookService {
 
     BookDto getOne (Integer id);
 
-    Book createBook(BookDto bookDto);
+    String createBook(BookDto bookDto);
 
     Book editBook (Integer id, BookDto bookDto);
 

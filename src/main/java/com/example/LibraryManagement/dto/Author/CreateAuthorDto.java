@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthorDto {
-    private Integer id;
+public class CreateAuthorDto {
     private String name;
     private String slug;
 }

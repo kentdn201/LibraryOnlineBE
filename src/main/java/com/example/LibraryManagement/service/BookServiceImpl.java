@@ -29,17 +29,20 @@ public class BookServiceImpl implements BookService {
         return bookDto;
     }
 
-    public BookDto getBookBySlug(String slug)
-    {
+    public BookDto getBookBySlug(String slug) {
         BookDto bookDto = ObjectMapperUtils.map(bookRepository.findBookBySlug(slug), BookDto.class);
         return bookDto;
     }
 
     @Override
-    public Book createBook(BookDto bookDto) {
-        Book book = ObjectMapperUtils.map(bookDto, Book.class);
-        bookRepository.save(book);
-        return book;
+    public String createBook(BookDto bookDto) {
+        try {
+            Book book = ObjectMapperUtils.map(bookDto, Book.class);
+            bookRepository.save(book);
+            return "Create Success";
+        } catch (Exception e) {
+            return "This slug is available or category is not available";
+        }
     }
 
     @Override

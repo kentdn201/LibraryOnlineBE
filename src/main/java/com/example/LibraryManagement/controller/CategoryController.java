@@ -1,6 +1,6 @@
 package com.example.LibraryManagement.controller;
 
-import com.example.LibraryManagement.dto.Category.CategoryDto;
+import com.example.LibraryManagement.dto.Category.CreateCategoryDto;
 import com.example.LibraryManagement.service.CategoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,28 +15,28 @@ public class CategoryController {
     private CategoryServiceImpl categoryService;
 
     @GetMapping("/all")
-        public List<CategoryDto> getAll()
+        public List<CreateCategoryDto> getAll()
     {
         return categoryService.getAll();
     }
 
     @GetMapping("/get/{id}")
-    public CategoryDto getCategory(@PathVariable(name = "id") Integer id)
+    public CreateCategoryDto getCategory(@PathVariable(name = "id") Integer id)
     {
         return categoryService.getOne(id);
     }
 
     @PostMapping("/create")
-    public String createCategory (@RequestBody CategoryDto categoryDto)
+    public String createCategory (@RequestBody CreateCategoryDto createCategoryDto)
     {
-        categoryService.createCategory(categoryDto);
+        categoryService.createCategory(createCategoryDto);
         return "Create success";
     }
 
     @PutMapping("/edit/{id}")
-    public String editCategory (@PathVariable(name = "id") Integer id, @RequestBody CategoryDto categoryDto)
+    public String editCategory (@PathVariable(name = "id") Integer id, @RequestBody CreateCategoryDto createCategoryDto)
     {
-        categoryService.editCategory(id, categoryDto);
+        categoryService.editCategory(id, createCategoryDto);
         return "Edit success";
     }
 

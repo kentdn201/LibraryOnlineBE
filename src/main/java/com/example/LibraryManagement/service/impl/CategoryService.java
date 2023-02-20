@@ -1,21 +1,21 @@
 package com.example.LibraryManagement.service.impl;
 
-import com.example.LibraryManagement.dto.Category.CategoryDto;
+import com.example.LibraryManagement.dto.Category.CreateCategoryDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public interface CategoryService {
-    List<CategoryDto> getAll();
+    List<CreateCategoryDto> getAll();
 
-    CategoryDto getOne(Integer id);
+    CreateCategoryDto getOne(Integer id);
 
-    CategoryDto getBySlug(String slug);
+    CreateCategoryDto getBySlug(String slug);
 
-    String createCategory(CategoryDto categoryDto);
+    String createCategory(CreateCategoryDto createCategoryDto);
 
-    String editCategory(Integer id, CategoryDto categoryDto);
+    String editCategory(Integer id, CreateCategoryDto createCategoryDto);
 
     String deleteCategory(Integer id);
 }

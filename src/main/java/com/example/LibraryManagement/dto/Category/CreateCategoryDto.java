@@ -1,4 +1,4 @@
-package com.example.LibraryManagement.dto.Author;
+package com.example.LibraryManagement.dto.Category;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthorDto {
-    private Integer id;
+public class CreateCategoryDto {
     private String name;
     private String slug;
+    private String image;
 }
